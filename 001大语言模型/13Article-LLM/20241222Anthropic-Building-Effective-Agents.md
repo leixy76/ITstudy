@@ -1,4 +1,4 @@
-## 20241222Anthropic-Building-effective-agents
+## 20241222Anthropic-Building-Effective-Agents
 
 [Building effective agents \ Anthropic](https://www.anthropic.com/research/building-effective-agents)
 
@@ -117,6 +117,8 @@ Examples where prompt chaining is useful:
 首先生成市场营销文案，接着将文案翻译成不同的语言。
 
 2 Writing an outline of a document, checking that the outline meets certain criteria, then writing the document based on the outline.
+
+编写文档大纲，检查该大纲是否满足特定要求，然后根据该大纲撰写文档。
 
 #### Workflow: Routing
 
