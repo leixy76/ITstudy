@@ -25,6 +25,11 @@ Flags:
   -v, --version   Show version information
 
 
+launchctl setenv OLLAMA_HOST "0.0.0.0"
+
+ngrok http 11434 --host-header="localhost:11434"
+
+
 ollama run llama2
 
 ollama create minicpm-o-2_6 -f Modelfile
