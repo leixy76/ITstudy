@@ -462,16 +462,90 @@ llama_index.vector_stores.weaviate._exceptions.AsyncClientNotProvidedError: Asyn
 
 通过下列方法将文档的摘要和文档内容向量化后存入 weaviate 向量数据库中。
 
-```
+```py
     summary_index = SummaryIndex(nodes)
     vector_index = VectorStoreIndex(nodes)
 ```
 
 用如下方法可以将文档内容从向量数据库中取出索引，那么如何取出摘要的索引。
 
-```
+```py
     vector_store = WeaviateVectorStore(
         weaviate_client=client, 
         index_name=index_name
     )
 ```
+
+#### 04 llamaindex通过大模型向量检索获得的答案跟使用大模型提问的获得的答案是两回事
+
+llamaindex通过大模型向量检索获得的答案跟使用大模型提问的获得的答案是两回事，之前一直以为是通过个东西。
+
+换句话说：llamaindex通过大模型向量检索，其目的是为了获得检索的上下文，而不是最后的答案。最后的答案是要用额外的大模型将问题上下文合并后单独提给大模型。
+
+如何发现问题的：每次检索后提问获得的答案好简单。同样的向量数据库和问题，在 page assist 里提问就很详细，最后终于找到问题了。
+
+之前的代码：
+
+```py
+def retrieval_from_documents_llamaindex(prompt, index_name, similarity_top_k):
+    # 连接本地 Weaviate
+    client = weaviate.connect_to_local()
+
+    vector_store = WeaviateVectorStore(
+        weaviate_client=client, 
+        index_name=index_name
+    )
+
+    vector_index = VectorStoreIndex.from_vector_store(vector_store)
+    query_engine = vector_index.as_query_engine(similarity_top_k=similarity_top_k)
+
+    response = query_engine.query(prompt)
+    print(str(response))
+    # print(len(response.source_nodes))
+    for n in response.source_nodes:
+        print(n.metadata)
+        print(n.text)
+        print("----------------------------------------------------------")
+
+    client.close()  # Free up resources
+```
+
+
+修改后的代码：
+
+```py
+def retrieval_from_documents(question, index_name, similarity_top_k):
+    # 连接本地 Weaviate
+    client = weaviate.connect_to_local()
+
+    vector_store = WeaviateVectorStore(
+        weaviate_client=client, 
+        index_name=index_name
+    )
+
+    vector_index = VectorStoreIndex.from_vector_store(vector_store)
+    query_engine = vector_index.as_query_engine(similarity_top_k=similarity_top_k)
+
+    response = query_engine.query(question)
+    context = "\n".join([n.text for n in response.source_nodes])
+
+    prompt_template = ChatPromptTemplate.from_messages(
+        [("system", system_template), ("user", "{context}")]
+    )
+    prompt = prompt_template.invoke({"context": context, "question": question})
+
+    response = model.stream(prompt)
+    for chunk in response:
+        print(chunk.content, end='', flush=True)
+    # print(response.content)
+
+    client.close()  # Free up resources
+```
+
+
+
+
+
+
+
+
