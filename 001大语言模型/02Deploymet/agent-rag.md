@@ -1,5 +1,97 @@
 ### 部署记录
 
+#### 2025-02-18
+
+
+
+
+
+#### 2025-02-17
+
+1、检索时可以不用传递给 llama_index 大模型。
+
+源代码：
+
+```py
+Settings.llm = OpenAI(
+    api_base="https://api.302.ai/v1",
+    api_key=api_key,
+    model_name="deepseek-v3-huoshan"
+)
+```
+
+因为之前看课程「2025004Building-Agentic-RAG-with-Llamaindex」，是将大模型直接嵌入到 llama_index 里的，发现效果不好，后来直接重新调用了大模型将检索的的结果合并到 Prompt 里提问。
+
+今天才发现，其实根本无需将大模型嵌入到 llama_index，llama_index 在检索的时候压根不是用的大模型。上面的代码可以直接注释掉。
+
+2、支持检索向量数据库中的多个 collections。
+
+```py
+def basic_query_from_documents(question, index_names, similarity_top_k):
+    try:
+        client = weaviate.connect_to_local()
+        
+        if isinstance(index_names, str):
+            index_names = [index_names]
+            
+        vector_indices = []
+        for index_name in index_names:
+            vector_store = WeaviateVectorStore(
+                weaviate_client=client, 
+                index_name=index_name
+            )
+            vector_index = VectorStoreIndex.from_vector_store(vector_store)
+            vector_indices.append(vector_index)
+        
+        # 创建每个索引的检索器
+        retrievers = [index.as_retriever(similarity_top_k=similarity_top_k) for index in vector_indices]
+        
+        # 自定义复合检索器
+        # 修改后的 MultiIndexRetriever 实现
+        class MultiIndexRetriever(BaseRetriever):
+            def __init__(self, retrievers, similarity_top_k):
+                super().__init__()
+                self.retrievers = retrievers
+                self.similarity_top_k = similarity_top_k  # 存储全局 top_k 值
+
+            def _retrieve(self, query, **kwargs):
+                all_nodes = []
+                # 收集所有检索器的节点
+                for retriever in self.retrievers:
+                    retrieved_nodes = retriever.retrieve(query, **kwargs)
+                    all_nodes.extend(retrieved_nodes)
+                
+                # 按相似度分数降序排序（分数越高越相关）
+                sorted_nodes = sorted(all_nodes, key=lambda x: x.score, reverse=True)
+                
+                # 截取前 similarity_top_k 个节点
+                return sorted_nodes[:self.similarity_top_k]
+
+        # 创建复合检索器时传入 similarity_top_k 参数
+        combined_retriever = MultiIndexRetriever(retrievers, similarity_top_k=similarity_top_k)  # 关键修改
+
+        # 创建查询引擎时不需要再设置 similarity_top_k（已在检索器层处理）
+        query_engine = RetrieverQueryEngine.from_args(combined_retriever)
+        
+        response = query_engine.query(question)
+        context = "\n".join([n.text for n in response.source_nodes])
+        source_datas = response.source_nodes
+        
+        print_data_sources(source_datas)
+        print(f"Number of source nodes: {len(source_datas)}")
+        
+        chat_with_llm(question, context)
+
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
+        raise
+    finally:
+        if 'client' in locals():
+            client.close()
+            print("\nWeaviate connection closed.")
+```
+
+
 #### 2025-02-14
 
 1、实现向量化前的分割文档。

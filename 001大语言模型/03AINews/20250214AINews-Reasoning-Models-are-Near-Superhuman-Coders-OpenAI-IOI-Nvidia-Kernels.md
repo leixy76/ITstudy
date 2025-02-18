@@ -374,6 +374,9 @@ Nous Research Debuts DeepHermes-3 for Superior Reasoning: Nous Research launched
 
 
 
+
+
+
 Nous Research 发布 DeepHermes-3，实现卓越推理：Nous Research 推出了 DeepHermes-3 Preview，这款模型在统一推理和直观语言模型能力方面取得了显著进展。为了激活其强大的长程思维链推理能力，DeepHermes-3 需要特定的系统提示，并带有相应的标签。这种设计旨在提升模型系统性问题解决能力。基准测试结果表明，DeepHermes-3 在数学推理方面的表现有了显著提升。
 
 Anthropic Plans Reasoning-Integrated Claude Version: Anthropic is set to release a new Claude model combining traditional LLM and reasoning AI capabilities, controlled by a token-based sliding scale, for tasks like coding, with rumors that it may be better than OpenAI's o3-mini-high in several benchmarks. The unveiling of these models and their new abilities signals the beginning of a new era of hybrid thinking in AI systems.
