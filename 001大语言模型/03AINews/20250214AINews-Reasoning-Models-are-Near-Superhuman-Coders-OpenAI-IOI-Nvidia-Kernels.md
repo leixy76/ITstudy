@@ -138,7 +138,7 @@ Memes / 幽默
 
 ### AI Reddit Recap
 
-AI Reddit 回顾
+#### AI Reddit 回顾
 
 /r/LocalLlama Recap
 
@@ -242,7 +242,7 @@ Uncertainty about Computing Power: There is contention regarding the actual comp
 
 计算能力之谜：关于 DeepSeek 在研发过程中究竟使用了多少计算资源，各方说法不一，一些用户对在网络上流传的各种猜测性数据提出了质疑。这场讨论凸显了获取准确数据的重要性，尤其是在数据集和计算能力这类关键资源上，这对于理解和复现 AI 系统至关重要。
 
-### Other AI Subreddit Recap
+#### Other AI Subreddit Recap
 
 其他 AI 相关 Reddit 子版块精选
 
@@ -372,6 +372,8 @@ Nous Research Debuts DeepHermes-3 for Superior Reasoning: Nous Research launched
 
 
 
+
+## 阅读记录
 
 
 

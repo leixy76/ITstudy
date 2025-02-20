@@ -209,13 +209,13 @@ According to Jakob's Law, "Users spend most of their time on other sites. This m
 
 > "As you onboard users to a new AI-driven product or feature, guide them with familiar touchpoints.With AI-driven products, there can be a temptation to communicate the "newness" or "magic" of the system's predictions through its UI metaphors.However, unfamiliar UI touchpoints can make it harder for users to learn to use your system, potentially leading to degraded understanding of, or trust in, your product, no matter the quality of your AI output.Instead, anchor new users with familiar UI patterns and features. This will make it easier for them to focus on the key task at hand, which is building comfort with, and calibrating their trust in, your system's recommendations".People + AI Guidebook by Google
 
-「在引导用户体验新的 AI 驱动的产品或功能时，请使用户们熟悉的交互方式来引导他们。对于 AI 驱动的产品，开发者可能倾向于通过用户界面（UI）来传达系统预测的「新颖性」或「魔力」。然而，不熟悉的用户界面反而会增加用户学习成本，无论 AI 的输出质量如何，都可能导致用户对产品的理解或信任度下降。相反，应该使用户们熟悉的 UI 模式和功能来帮助他们上手。这将有助于用户专注于当前的任务，即逐步适应并信任系统的推荐」。Google 的 *People + AI Guidebook*
+「在引导用户体验新的 AI 驱动的产品或功能时，请使用户们熟悉的交互方式来引导他们。对于 AI 驱动的产品，开发者可能倾向于通过用户界面（UI）来传达系统预测的「新颖性」或「魔力」。然而，不熟悉的用户界面反而会增加用户学习成本，无论 AI 的输出质量如何，都可能导致用户对产品的理解或信任度下降。相反，应该使用户们熟悉的 UI 模式和功能来帮助他们上手。这将有助于用户专注于当前的任务，即逐步适应并信任系统的推荐」。
 
 For example, Relume uses purple accents and sparkle emojis to highlight AI-powered features, which have already become an established pattern for communicating AI-supported functionalities, especially in products that are not AI-first. This approach facilitates cognitive offloading by reducing the mental effort required for users to identify and engage with AI functionalities. Instead of scanning the interface or reading detailed instructions, users can rely on these visual cues to quickly locate AI tools.
 
 例如，Relume 使用紫色强调色和闪光表情符号来突出显示 AI 驱动的功能，这已经成为一种通用的做法，用于告知用户哪些功能是由 AI 提供支持的，尤其是在那些并非以 AI 为核心的产品中。这种做法通过减少用户识别和使用 AI 功能时的认知负担，来促进认知卸载。用户不需要仔细浏览界面或阅读长篇的说明文档，而是可以依靠这些视觉提示来快速找到相关的 AI 工具。
 
-Relume, [source](https://mobbin.com/screens/6aa94975-407e-489f-a288-6c4d250cf671)
+Fig: Relume, [source](https://mobbin.com/screens/6aa94975-407e-489f-a288-6c4d250cf671)
 
 Some resources:
 

@@ -1,9 +1,235 @@
 ### 部署记录
 
+[Prompt Templates | 🦜️🔗 LangChain](https://python.langchain.com/docs/concepts/prompt_templates/)
+
+后端接口启动：
+
+python3.10 -m api.main
+
+前端页面启动：
+
+cd frontend
+python3.10 main.py
+
+
+反常 1：设了 assist page 里 RAG 的系统提示词，效果反而不好。
+
+system_template = '''
+You are a helpful AI assistant. Reply in Simplified Chinese. Use the following pieces of context to answer the question at the end. If you don't know the answer, just say you don't know. DO NOT try to make up an answer. If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context. {context}  Question: {question} Helpful answer:
+'''
+
+注释了，直接用下面的：
+
+system_template = "You are a helpful AI assistant.... Reply in Simplified Chinese."
+
+反常 1：把相关性低的检索数据过滤掉，效果反而不好。
+
+```py
+                # 截取前 similarity_top_k 个节点
+                return sorted_nodes[:self.similarity_top_k]
+``
+
+剔除的代码：
+
+```py
+                # 截取前 similarity_top_k 个节点
+                top_k_nodes = sorted_nodes[:self.similarity_top_k]
+                
+                # 剔除score值低于0.4的节点
+                filtered_nodes = [node for node in top_k_nodes if node.score >= 0.4]
+                
+                return filtered_nodes
+``
+
+
+
+https://x.com/op7418/status/1890332159639998907
+
+DeepSeek 于 2025+02-14 发文的信息：
+
+Excited to see everyone’s enthusiasm for deploying DeepSeek-R1! Here are our recommended settings for the best experience:
+
+• No system prompt
+• Temperature: 0.6
+• Official prompts for search & file upload:  http://bit.ly/4hyH8np
+• Guidelines to mitigate model bypass thinking: http://bit.ly/4gJrhkF
+
+The official DeepSeek deployment runs the same model as the open-source version—enjoy the full DeepSeek-R1 experience!
+
+
+**response with \"\<think\>\n\" at the beginning of every output.**
+
+system_template = "在每次输出的开始都使用\"<think>\n\"作为起始。"
+
+
+
+
+
+缓解 R1 模型绕过思考的方法：
+
+我们观察到 DeepSeek-R1 系列模型在回应某些查询时倾向于绕过思维模式（即输出"<think>\n\n</think>"），这可能会对模型的表现产生负面影响。 
+
+为了确保模型进行充分的推理，我们建议强制模型在每次输出的开始都使用"<think>\n"作为起始。
+
+
+Deepseek R1 官方文件上传提示词：
+
+For file upload, please follow the template to create prompts, where {file_name}, {file_content} and {question} are arguments. 
+```
+file_template = \
+"""[file name]: {file_name}
+[file content begin]
+{file_content}
+[file content end]
+{question}"""
+```
+
+
+Deepseek R1 官方搜索提示词
+
+  For Chinese query, we use the prompt:
+```
+search_answer_zh_template = \
+'''# 以下内容是基于用户发送的消息的搜索结果:
+{search_results}
+在我给你的搜索结果中，每个结果都是[webpage X begin]...[webpage X end]格式的，X代表每篇文章的数字索引。请在适当的情况下在句子末尾引用上下文。请按照引用编号[citation:X]的格式在答案中对应部分引用上下文。如果一句话源自多个上下文，请列出所有相关的引用编号，例如[citation:3][citation:5]，切记不要将引用集中在最后返回引用编号，而是在答案对应部分列出。
+在回答时，请注意以下几点：
+- 今天是{cur_date}。
+- 并非搜索结果的所有内容都与用户的问题密切相关，你需要结合问题，对搜索结果进行甄别、筛选。
+- 对于列举类的问题（如列举所有航班信息），尽量将答案控制在10个要点以内，并告诉用户可以查看搜索来源、获得完整信息。优先提供信息完整、最相关的列举项；如非必要，不要主动告诉用户搜索结果未提供的内容。
+- 对于创作类的问题（如写论文），请务必在正文的段落中引用对应的参考编号，例如[citation:3][citation:5]，不能只在文章末尾引用。你需要解读并概括用户的题目要求，选择合适的格式，充分利用搜索结果并抽取重要信息，生成符合用户要求、极具思想深度、富有创造力与专业性的答案。你的创作篇幅需要尽可能延长，对于每一个要点的论述要推测用户的意图，给出尽可能多角度的回答要点，且务必信息量大、论述详尽。
+- 如果回答很长，请尽量结构化、分段落总结。如果需要分点作答，尽量控制在5个点以内，并合并相关的内容。
+- 对于客观类的问答，如果问题的答案非常简短，可以适当补充一到两句相关信息，以丰富内容。
+- 你需要根据用户要求和回答内容选择合适、美观的回答格式，确保可读性强。
+- 你的回答应该综合多个相关网页来回答，不能重复引用一个网页。
+- 除非用户要求，否则你回答的语言需要和用户提问的语言保持一致。
+\# 用户消息为：
+{question}'''
+```
+
+
+
+
+
+
+
+#### 2025-02-19
+
+使用 Flask 自带的 debug 模式，它也有自动重载功能：
+
+app.run(host='0.0.0.0', port=5001, debug=True)
+
+1、增加前端页面。
+
+
+
+
+
+
+
+
 #### 2025-02-18
 
+1、调用大模型单独封装出来。
+
+```py
+def chat_with_llm(question, context):
+    full_response = ""
+    system_template = '''
+    You are a helpful AI assistant. Reply in Simplified Chinese. Use the following pieces of context to answer the question at the end. If you don't know the answer, just say you don't know. DO NOT try to make up an answer. If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context. {context}  Question: {question} Helpful answer:
+    '''
+    prompt_template = ChatPromptTemplate.from_messages(
+        [("system", system_template), ("user", "{context}")]
+    )
+    prompt = prompt_template.invoke({"context": context, "question": question})
+    response = model.stream(prompt)
+    for chunk in response:
+        print(chunk.content, end='', flush=True)
+        full_response += chunk.content
+    return full_response
+``
 
 
+
+```py
+def chat_with_llm_pure(question, chat_record_file=None):
+    full_response = ""
+    response = model.stream(question)
+    for chunk in response:
+        print(chunk.content, end='', flush=True)
+        full_response += chunk.content
+    if chat_record_file:
+        with open(chat_record_file, 'w', encoding='utf-8') as f:
+            f.write(f"[question]:\n\n{question}\n\n[answer]:\n\n{full_response}")
+    return full_response
+``
+
+
+1、用 FastAPI 封装成接口。
+
+项目的结构调整如下：
+
+project_root/
+├── src/
+│   ├── api/
+│   │   └── main.py
+│   ├── retrieval.py
+│   ├── indexing.py
+│   ├── utils.py
+│   └── agent_rag.py
+├── eval/
+│   └── utils_eval.py
+└── helper.py
+└── .env
+
+01 确保项目根目录在 Python 路径中
+
+为了让绝对导入正常工作，需要确保项目根目录在 Python 的 `sys.path` 中。可以在项目入口文件（如 `main.py`）中添加以下代码：
+
+```py
+import sys
+import os
+
+ # 将项目根目录添加到 sys.path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+``
+
+02 创建 src/__init__.py
+
+在 `src/` 目录下创建一个空的 `__init__.py` 文件，使其成为一个 Python 包：
+
+03 将包的引用修改为绝对路径。比如：
+
+修改 `src/api/main.py`
+
+运行后报错：
+```
+python3.10 api/main.py
+Traceback (most recent call last):
+  File "/Users/Daglas/dalong.github/agent-rag/src/api/main.py", line 3, in <module>
+    from src.retrieval import basic_query_from_documents, chat_with_llm_pure
+ModuleNotFoundError: No module named 'src'
+```
+
+这个错误表明 Python 无法找到 `src` 模块。这是因为 Python 的模块搜索路径（`sys.path`）中没有包含项目的根目录。让我们一步步解决这个问题：
+
+最终选的解决方案：
+
+解决方案 1：修改运行方式（推荐）
+
+cd /Users/Daglas/dalong.github/agent-rag
+python3.10 -m src.api.main
+
+跑起来后，随便在一个 shell 里输入即可：
+
+
+curl -X POST "http://localhost:8001/query" \
+-H "Content-Type: application/json" \
+-d '{
+    "question": "大模型领域有哪些机会，特别是 DeepSeek 生态相关的。详细阐述。",
+    "index_names": ["Yangzhiping"],
+    "similarity_top_k": 12
+}'
 
 
 #### 2025-02-17
@@ -636,7 +862,25 @@ def retrieval_from_documents(question, index_name, similarity_top_k):
 
 
 
+### gemini 的调用
 
+```py
+os.environ["http_proxy"] = "http://127.0.0.1:7890"
+os.environ["https_proxy"] = "http://127.0.0.1:7890"
+api_key_google = get_api_key_google()
+genai.configure(api_key=api_key_google, transport="rest")
+gemini_model = genai.GenerativeModel(
+    model_name = "gemini-2.0-flash-thinking-exp-01-21",
+)
+def chat_with_gemini(question, context):
+    system_template = f"You are a helpful AI assistant. Use the following pieces of context to answer the question at the end. If you don't know the answer, just say you don't know. DO NOT try to make up an answer. If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context. Question: {question} context: {context}  Helpful answer:"
+    response = gemini_model.generate_content(
+                contents=system_template, 
+                stream=True)
+    for chunk in response:
+        print(chunk.text, end="", flush=True)
+    print(response.text)
+```
 
 
 
