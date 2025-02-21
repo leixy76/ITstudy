@@ -223,57 +223,69 @@ Some resources:
 
 「成功软件的 UI 设计模式」—— 在探索特定于 AI 的模式之前，建议您先回顾对标准模式的理解，IxDF 的这门课程是极好的途径。
 
-* While the design rules for AI are still being written, you can spot emerging trends on the "Shape of AI" website — a treasure trove of examples curated by Emily Campbell
+2 While the design rules for AI are still being written, you can spot emerging trends on the "Shape of AI" website — a treasure trove of examples curated by Emily Campbell
 
-* 尽管关于 AI 的设计规范仍在不断完善，你可以在「AI 设计趋势（Shape of AI）」网站上发现最新的设计理念 —— 这是一个由 Emily Campbell 精心收集的丰富案例集。
+尽管关于 AI 的设计规范仍在不断完善，你可以在「AI 设计趋势（Shape of AI）」网站上发现最新的设计理念 —— 这是一个由 Emily Campbell 精心收集的丰富案例集。
 
-* Vitaly Friedman also shared his observations in IxDF masterclass "How to elevate the user experience of AI with design patterns"
+Vitaly Friedman 还在 IxDF 大师班的讲座中，以「如何通过设计模式提升 AI 的用户体验」为题，分享了他的见解。
 
-* The People + AI Research team at Google developed a list of patterns as part of their Guidebook — a comprehensive resource featuring methods, best practices, and examples for designing with AI.
+3 Vitaly Friedman also shared his observations in IxDF masterclass "How to elevate the user experience of AI with design patterns"
 
-* Vitaly Friedman 还在 IxDF 大师班的讲座中，以「如何通过设计模式提升 AI 的用户体验」为题，分享了他的见解。
+4 The People + AI Research team at Google developed a list of patterns as part of their Guidebook — a comprehensive resource featuring methods, best practices, and examples for designing with AI.
 
-* Google 的「人 + AI 研究」团队编制了一系列设计模式，并将其纳入他们的指南中。该指南是一份内容全面的资源，提供了使用 AI 进行设计的各种方法、最佳实践和案例。
+Google 的「人 + AI 研究」团队编制了一系列设计模式，并将其纳入他们的指南中。该指南是一份内容全面的资源，提供了使用 AI 进行设计的各种方法、最佳实践和案例。
 
 #### 4. Leveraging progressive disclosure
 
+利用渐进式呈现
+
 Progressive disclosure is a classic principle in human-computer interaction that simplifies complex interactions by introducing content and functionality in incremental steps. Instead of overwhelming users with all options at once, this approach reveals information as needed, based on the user's progress through the system. This method is particularly effective in AI applications, where managing complexity is crucial.
 
-4. 利用渐进式呈现渐进式呈现（Progressive disclosure）是人机交互领域的一个经典原则，它通过逐步引入内容和功能来简化复杂的交互。这种方法避免一次性呈现所有选项给用户造成的困扰，而是根据用户在系统中的操作进度，在需要时才显示相应的信息。在 AI 应用中，这种方法尤其有效，因为它可以有效降低复杂性。
+渐进式呈现（Progressive disclosure）是人机交互领域的一个经典原则，它通过逐步引入内容和功能来简化复杂的交互。这种方法避免一次性呈现所有选项给用户造成的困扰，而是根据用户在系统中的操作进度，在需要时才显示相应的信息。在 AI 应用中，这种方法尤其有效，因为它可以有效降低复杂性。
 
 For example, Airtable's AI-assisted app creation flow uses a wizard-like interface, guiding users through bite-sized, context-aware steps. By tailoring the experience to the user's specific goals, Airtable eliminates the cognitive load of filling out endless forms, making the process feel intuitive and manageable.
 
 例如，Airtable 利用 AI 辅助创建应用，其流程采用向导式界面，引导用户逐步完成细致且具有上下文感知能力的步骤。通过根据用户的特定目标定制体验，Airtable 减轻了用户填写大量表单的认知压力，使应用创建过程变得直观且易于上手。
 
-Airtable, [source](https://mobbin.com/screens/e45e4b32-f5d3-46e0-b265-b225fc21d860)Another great example is Jasper, which uses tiles to present snippets of functionality. Rather than overloading users with the technical details of how text is generated, Jasper focuses on identifying the end goal of the collaboration between human and AI. This allows users to concentrate on outcomes, not processes, creating a seamless and engaging experience that reduces cognitive effort.
+Fig: Airtable, [source](https://mobbin.com/screens/e45e4b32-f5d3-46e0-b265-b225fc21d860)
 
-Airtable，[来源](https://mobbin.com/screens/e45e4b32-f5d3-46e0-b265-b225fc21d860）另一个绝佳的例子是 Jasper，它使用卡片模块来呈现各项功能。Jasper 并没有向用户灌输文本生成的各种技术细节，而是专注于识别用户与 AI 协作的最终目标。这使得用户能够专注于结果，而不是过程，从而创造出流畅且富有吸引力的体验，并减轻用户的思考负担。
+Another great example is Jasper, which uses tiles to present snippets of functionality. Rather than overloading users with the technical details of how text is generated, Jasper focuses on identifying the end goal of the collaboration between human and AI. This allows users to concentrate on outcomes, not processes, creating a seamless and engaging experience that reduces cognitive effort.
 
-Jasper, [source](https://mobbin.com/screens/9f94fbd9-73f3-413a-883d-3257af6abc4d)Some resources:
+另一个绝佳的例子是 Jasper，它使用卡片模块来呈现各项功能。Jasper 并没有向用户灌输文本生成的各种技术细节，而是专注于识别用户与 AI 协作的最终目标。这使得用户能够专注于结果，而不是过程，从而创造出流畅且富有吸引力的体验，并减轻用户的思考负担。
 
-* "Progressive disclosure" — an article providing a detailed overview of the technique by Jakob Nielsen.
+Fig: Jasper, [source](https://mobbin.com/screens/9f94fbd9-73f3-413a-883d-3257af6abc4d)
 
-Jasper，[source](https://mobbin.com/screens/9f94fbd9-73f3-413a-883d-3257af6abc4d） 一些资源：
+Some resources:
 
-*「逐步展示」(Progressive disclosure） — 一篇由 Jakob Nielsen 撰写的文章，详细介绍了这项技术。
+1 "Progressive disclosure" — an article providing a detailed overview of the technique by Jakob Nielsen.
 
-* "Progressive disclosure" — an article by Frank Spiller from The Glossary of Human Computer Interaction book.
+逐步展示」(Progressive disclosure） — 一篇由 Jakob Nielsen 撰写的文章，详细介绍了这项技术。
 
-* "Progressive disclosure: when, why, and how do users want algorithmic transparency information?" — a research paper exploring how to balance explainability with cognitive overload.
+[Progressive Disclosure](https://www.nngroup.com/articles/progressive-disclosure/)
 
-*「渐进式披露（Progressive disclosure）」—— Frank Spiller 发表在《人机交互术语表》中的一篇文章。
+2 "Progressive disclosure" — an article by Frank Spiller from The Glossary of Human Computer Interaction book.
 
-*「渐进式披露：用户在何时、为何以及如何需要算法透明度信息？」—— 这是一篇研究论文，探讨了如何在可解释性和认知负荷之间取得平衡。
+「渐进式披露（Progressive disclosure）」—— Frank Spiller 发表在《人机交互术语表》中的一篇文章。
 
-* "Progressive disclosure options for improving choice overload on home screens" — a research paper that connects progressive disclosure with the concepts of choice overload and legibility, offering some practical insights.
+[The Glossary of Human Computer Interaction | IxDF](https://www.interaction-design.org/literature/book/the-glossary-of-human-computer-interaction)
+
+3 "Progressive disclosure: when, why, and how do users want algorithmic transparency information?" — a research paper exploring how to balance explainability with cognitive overload.
+
+「渐进式披露：用户在何时、为何以及如何需要算法透明度信息？」—— 这是一篇研究论文，探讨了如何在可解释性和认知负荷之间取得平衡。
+
+[Progressive Disclosure](https://dl.acm.org/doi/pdf/10.1145/3374218)
+
+4 "Progressive disclosure options for improving choice overload on home screens" — a research paper that connects progressive disclosure with the concepts of choice overload and legibility, offering some practical insights.
 
 「改善主屏幕选择过载的渐进式披露方案」—— 这是一篇研究论文，它将渐进式披露（progressive disclosure）与选择过载（choice overload）和易读性（legibility）的概念联系起来，并提供了一些具有实践意义的见解。
 
 #### 5. Ensuring graceful failure
 
+妥善处理错误
+
 AI functionality is still new to many users, and errors are inevitable. The key is to ensure that mistakes don't disrupt the user flow entirely. Instead, the system should support users in recovering smoothly and continuing toward their goal. This is especially critical for AI systems, where trust can be fragile — just one glaring error can be enough to break a user's confidence in the tool.
 
-5. 妥善处理错误人工智能（AI）功能对许多用户来说仍然是新鲜事物，因此错误不可避免。关键在于确保错误不会彻底中断用户体验。相反，系统应帮助用户顺利恢复并继续完成任务。这对于 AI 系统尤其重要，因为用户信任感可能非常容易丧失 —— 哪怕是一个明显的错误，也可能导致用户对工具失去信心。
+人工智能（AI）功能对许多用户来说仍然是新鲜事物，因此错误不可避免。关键在于确保错误不会彻底中断用户体验。相反，系统应帮助用户顺利恢复并继续完成任务。这对于 AI 系统尤其重要，因为用户信任感可能非常容易丧失 —— 哪怕是一个明显的错误，也可能导致用户对工具失去信心。
 
 Graceful failure means designing systems that handle errors transparently and helpfully. For example, if an AI misinterprets a query or generates a flawed result, it should provide users with an easy way to revise, retry, or understand what went wrong. By offering clear explanations, alternative suggestions, or fallback options, AI systems can maintain user trust and engagement, even when things go awry.
 
@@ -285,25 +297,27 @@ A great example of ensuring graceful failure is Google Search's AI-powered featu
 
 Google, screenshot by the author Some resources:
 
-* "The importance of graceful degradation in accessible interface design" — an article by Eleanor Hecks on Smashing Magazine
-
 Google，作者提供的屏幕截图一些资源：
 
-*「可访问界面设计中优雅降级的重要性」—— Eleanor Hecks 在 Smashing Magazine 上发表的文章
+1 "The importance of graceful degradation in accessible interface design" — an article by Eleanor Hecks on Smashing Magazine
 
-* "The art of failing gracefully" — an article by Solomon Hawk that explores both engineering and UX perspectives.
+「可访问界面设计中优雅降级的重要性」—— Eleanor Hecks 在 Smashing Magazine 上发表的文章
 
-* An article "Errors + Graceful Failure" from People + AI Guidebook
+2 "The art of failing gracefully" — an article by Solomon Hawk that explores both engineering and UX perspectives.
 
-*「优雅地失败的艺术」— Solomon Hawk 的一篇文章，探讨了工程和用户体验（UX）的视角。
+「优雅地失败的艺术」— Solomon Hawk 的一篇文章，探讨了工程和用户体验（UX）的视角。
 
-* People + AI Guidebook 中的一篇文章「错误 + 优雅失败"
+3 An article "Errors + Graceful Failure" from People + AI Guidebook
+
+People + AI Guidebook 中的一篇文章「错误 + 优雅失败」
 
 #### 6. Contextual guidance
 
+上下文引导
+
 The success of human-AI collaboration hinges on shared mental models between the human and the AI as a hybrid team. For this collaboration to work effectively, users need a clear understanding of the AI system's capabilities and how to interact with it to achieve their goals. However, expecting users to develop this mental model by reading through a lengthy knowledge base is unrealistic.
 
-6. 上下文引导人与 AI 协作的成功取决于人类和 AI 作为团队一员之间共享的心理模型。为了使协作更有效，用户需要清楚地了解 AI 系统的能力以及如何与它互动以实现他们的目标。然而，期望用户通过阅读冗长的知识库来发展这种心理模型是不现实的。
+人与 AI 协作的成功取决于人类和 AI 作为团队一员之间共享的心理模型。为了使协作更有效，用户需要清楚地了解 AI 系统的能力以及如何与它互动以实现他们的目标。然而，期望用户通过阅读冗长的知识库来发展这种心理模型是不现实的。
 
 A more effective approach is to provide contextual guidance — offering help and explanations exactly when and where users need them. By integrating tooltips, inline prompts, or interactive tutorials, systems enable users to learn naturally as they engage with the interface.
 
@@ -317,25 +331,25 @@ Providing suggestions is one of the most common ways to help users build a menta
 
 提供建议是帮助用户理解 AI 系统工作方式的最常见方法之一。通过提供相关的提示，用户可以快速掌握系统的能力以及它支持的交互方式。例如，在连接数据源并查看相关指标后，用户可以在 6 月份向 June AI 询问相关分析。为了指导用户，June AI 提供了初始提示，让用户清楚地了解可以提哪些问题。这些建议使用户更容易探索系统的功能，从而更好地掌握使用方法。
 
-June, [source](https://mobbin.com/screens/7e7f8f52-3e8d-47dc-98a2-08120638a5a6)Some resources:
+Fig: June, [source](https://mobbin.com/screens/7e7f8f52-3e8d-47dc-98a2-08120638a5a6)
 
-* "Mental models" — an article from People + AI Guidebook
+Some resources:
 
-六月，[来源](https://mobbin.com/screens/7e7f8f52-3e8d-47dc-98a2-08120638a5a6）一些资源:
+1 "Mental models" — an article from People + AI Guidebook
 
-*「心理模型」—— 来自 People + AI Guidebook 的一篇文章
+「心理模型」—— 来自 People + AI Guidebook 的一篇文章
 
-* "Understanding user mental models around AI" — an article by Joana Cerejo
+2 "Understanding user mental models around AI" — an article by Joana Cerejo
 
-* "Building AI systems with a holistic mental model" — an article by Dr. Janna Lipenkova
+3 "Building AI systems with a holistic mental model" — an article by Dr. Janna Lipenkova
 
-未找到意译内容
+4 "Generative AI is reshaping our mental models of how products work. Product teams must adjust" — an article by People + AI Research @ Google
 
-* "Generative AI is reshaping our mental models of how products work. Product teams must adjust" — an article by People + AI Research @ Google
+「生成式 AI（Generative AI）正在重塑我们对于产品工作方式的固有认知。产品团队需要做出相应调整」——Google 的 People + AI Research 团队的一篇文章
 
 Have some more ideas or examples? Share them in the comments!
 
-*「生成式 AI（Generative AI）正在重塑我们对于产品工作方式的固有认知。产品团队需要做出相应调整」——Google 的 People + AI Research 团队的一篇文章还有更多的想法或例子吗？欢迎在评论区分享！
+还有更多的想法或例子吗？欢迎在评论区分享！
 
 ### Final thoughts
 

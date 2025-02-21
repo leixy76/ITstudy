@@ -109,7 +109,38 @@ search_answer_zh_template = \
 
 
 
+#### 2025-02-21
 
+1、外显思考过程。
+
+按 DeepSeek 官方的推荐设置改造了提示词。
+
+核心点 1：不要设置系统提示词。
+
+核心点 2：为了确保模型进行充分的推理，我们建议强制模型在每次输出的开始都使用"<think>\n"作为起始。
+
+核心点 3：temperature 参数设置为 0.6。
+
+发现输出的结果里带有了 <think> 标签，这个时候才知道之前自己拿到的结果其实包含了思考过程，一直以为自己没拿到思考过程。
+
+最开始的提示词：
+
+            prompt_template = ChatPromptTemplate([
+                ("user", "Use the following pieces of context to answer the question at the end.\n{context}\nQuestion: {question}")
+            ])
+
+
+改了一版后的提示词：
+
+            prompt_template = ChatPromptTemplate([
+                ("user", "Use the following pieces of context to answer the question at the end.\n{context}\nQuestion: {question}")
+            ])
+
+最终的提示词：
+
+            prompt_template = ChatPromptTemplate([
+                ("user", "**response with \"\<think\>\n\" at the beginning of every output.**\nUse the following pieces of context to answer the question at the end.\n{context}\nQuestion: {question}")
+            ])
 
 
 
@@ -120,8 +151,6 @@ search_answer_zh_template = \
 app.run(host='0.0.0.0', port=5001, debug=True)
 
 1、增加前端页面。
-
-
 
 
 
