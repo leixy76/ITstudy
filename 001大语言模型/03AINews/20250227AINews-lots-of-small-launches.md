@@ -1,5 +1,7 @@
 # [AINews] lots of small launches • Buttondown
 
+[[AINews] lots of small launches • Buttondown](https://buttondown.com/ainews/archive/ainews-lots-of-small-launches/)
+
 [AI News](https://buttondown.com/ainews)February 27, 2025 # [AINews] lots of small launches
 > This is AI News! an MVP of a service that goes thru all AI discords/Twitters/reddits and summarizes what people are talking about, so that you can keep up without the fatigue. Signing up here opts you in to the real thing when we launch it 🔜
 ---

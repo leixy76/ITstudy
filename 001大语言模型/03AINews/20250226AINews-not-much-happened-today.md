@@ -1,5 +1,7 @@
 # [AINews] not much happened today • Buttondown
 
+[[AINews] not much happened today • Buttondown](https://buttondown.com/ainews/archive/ainews-not-much-happened-today-6477/)
+
 [AI News](https://buttondown.com/ainews)February 26, 2025 # [AINews] not much happened today
 > This is AI News! an MVP of a service that goes thru all AI discords/Twitters/reddits and summarizes what people are talking about, so that you can keep up without the fatigue. Signing up here opts you in to the real thing when we launch it 🔜
 ---

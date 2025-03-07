@@ -1,5 +1,7 @@
 ## 20250225AINews-Claude-37-Sonnet
 
+[[AINews] Claude 3.7 Sonnet • Buttondown](https://buttondown.com/ainews/archive/ainews-claude-37-sonnet/)
+
 [AI News](https://buttondown.com/ainews)February 25, 2025 # [AINews] Claude 3.7 Sonnet
 > This is AI News! an MVP of a service that goes thru all AI discords/Twitters/reddits and summarizes what people are talking about, so that you can keep up without the fatigue. Signing up here opts you in to the real thing when we launch it 🔜
 ---
