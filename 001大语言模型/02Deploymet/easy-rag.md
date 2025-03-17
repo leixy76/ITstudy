@@ -87,7 +87,7 @@ file_template = \
 
 Deepseek R1 官方搜索提示词
 
-  For Chinese query, we use the prompt:
+For Chinese query, we use the prompt:
 ```
 search_answer_zh_template = \
 '''# 以下内容是基于用户发送的消息的搜索结果:

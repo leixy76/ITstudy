@@ -1,5 +1,9 @@
 ### 跑本地的 llm
 
+ollama create qwq-32b -f Modelfile
+
+
+
 [ollama/ollama: Get up and running with Llama 2, Mistral, Gemma, and other large language models.](https://github.com/ollama/ollama)
 
 Large language model runner
